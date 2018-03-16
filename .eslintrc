@@ -1,0 +1,7 @@
+{
+  "extends": "umi",
+  "rules": {
+    "quotes": [2, "single"],
+    "comma-dangle": ["error", "always-multiline"]
+  }
+}
