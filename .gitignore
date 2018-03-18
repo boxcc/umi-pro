@@ -13,3 +13,11 @@ npm-debug.log*
 # umi
 .umi
 .umi-production
+
+/coverage
+.idea
+yarn.lock
+package-lock.json
+*bak
+jsconfig.json
+.prettierrc
