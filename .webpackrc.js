@@ -19,4 +19,5 @@ export default {
     services: resolve(__dirname, 'src/services'),
     utils: resolve(__dirname, 'src/utils'),
   },
+  ignoreMomentLocale: true,
 };
