@@ -1,8 +1,13 @@
 import React from 'react';
 import { connect } from 'dva';
+import Redirect from 'umi/redirect';
 import styles from './index.css';
 
-function IndexPage() {
+function IndexPage({ login }) {
+  if (login) {
+    return <Redirect to="/login" />;
+  }
+  
   return (
     <div className={styles.normal}>
       <h1 className={styles.title}>Yay! Welcome to dva!</h1>
@@ -18,4 +23,10 @@ function IndexPage() {
 IndexPage.propTypes = {
 };
 
-export default connect()(IndexPage);
+const mapStateToProps = (state) => {
+  return {
+    login: state.global.login,
+  };
+}
+
+export default connect(mapStateToProps)(IndexPage);

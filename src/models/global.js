@@ -1,4 +1,5 @@
 import { queryNotices } from '../services/api';
+import { routerRedux } from 'dva/router';
 
 export default {
   namespace: 'global',
@@ -6,9 +7,16 @@ export default {
   state: {
     collapsed: false,
     notices: [],
+    login: false,
   },
 
   effects: {
+    *login(action, { call, put }) {
+      yield put({
+        type: 'signin',
+      });
+      yield put(routerRedux.push('/'));
+    },
     *fetchNotices(_, { call, put }) {
       const data = yield call(queryNotices);
       yield put({
@@ -34,6 +42,12 @@ export default {
   },
 
   reducers: {
+    signin(state) {
+      return {
+        ...state,
+        login: true,
+      };
+    },
     changeLayoutCollapsed(state, { payload }) {
       return {
         ...state,
@@ -54,14 +68,14 @@ export default {
     },
   },
 
-  subscriptions: {
-    setup({ history }) {
-      // Subscribe history(url) change, trigger `load` action if pathname is `/`
-      return history.listen(({ pathname, search }) => {
-        if (typeof window.ga !== 'undefined') {
-          window.ga('send', 'pageview', pathname + search);
-        }
-      });
-    },
-  },
+  // subscriptions: {
+  //   setup({ history }) {
+  //     // Subscribe history(url) change, trigger `load` action if pathname is `/`
+  //     return history.listen(({ pathname, search }) => {
+  //       if (typeof window.ga !== 'undefined') {
+  //         window.ga('send', 'pageview', pathname + search);
+  //       }
+  //     });
+  //   },
+  // },
 };

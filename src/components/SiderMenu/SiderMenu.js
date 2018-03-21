@@ -38,11 +38,11 @@ export default class SiderMenu extends PureComponent {
     };
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.location.pathname !== this.props.location.pathname) {
-      this.setState({
-        openKeys: this.getDefaultCollapsedSubMenus(nextProps),
-      });
-    }
+    // if (nextProps.location.pathname !== window.location.pathname) {
+    //   this.setState({
+    //     openKeys: this.getDefaultCollapsedSubMenus(nextProps),
+    //   });
+    // }
   }
   /**
    * Convert pathname to openKeys
@@ -50,7 +50,7 @@ export default class SiderMenu extends PureComponent {
    * @param  props
    */
   getDefaultCollapsedSubMenus(props) {
-    const { location: { pathname } } = props || this.props;
+    const { location: { pathname } } = window;
     return urlToList(pathname)
       .map((item) => {
         return getMeunMatcheys(this.flatMenuKeys, item)[0];
@@ -94,7 +94,7 @@ export default class SiderMenu extends PureComponent {
       <Link
         to={itemPath}
         target={target}
-        replace={itemPath === this.props.location.pathname}
+        replace={itemPath === window.location.pathname}
         onClick={
           this.props.isMobile
             ? () => {
@@ -160,7 +160,7 @@ export default class SiderMenu extends PureComponent {
   };
   // Get the currently selected menu
   getSelectedMenuKeys = () => {
-    const { location: { pathname } } = this.props;
+    const { location: { pathname } } = window;
     return urlToList(pathname).map(itemPath =>
       getMeunMatcheys(this.flatMenuKeys, itemPath).pop(),
     );
