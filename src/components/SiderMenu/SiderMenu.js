@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Layout, Menu, Icon } from 'antd';
 import pathToRegexp from 'path-to-regexp';
-import { Link } from 'dva/router';
+import Link from 'umi/link';
 import styles from './index.less';
 import { urlToList } from '../utils/pathTools';
 
@@ -38,11 +38,11 @@ export default class SiderMenu extends PureComponent {
     };
   }
   componentWillReceiveProps(nextProps) {
-    // if (nextProps.location.pathname !== window.location.pathname) {
-    //   this.setState({
-    //     openKeys: this.getDefaultCollapsedSubMenus(nextProps),
-    //   });
-    // }
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.setState({
+        openKeys: this.getDefaultCollapsedSubMenus(nextProps),
+      });
+    }
   }
   /**
    * Convert pathname to openKeys
@@ -94,7 +94,7 @@ export default class SiderMenu extends PureComponent {
       <Link
         to={itemPath}
         target={target}
-        replace={itemPath === window.location.pathname}
+        replace={itemPath === this.props.location.pathname}
         onClick={
           this.props.isMobile
             ? () => {

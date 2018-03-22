@@ -1,6 +1,6 @@
 import React, { PureComponent, createElement } from 'react';
 import PropTypes from 'prop-types';
-import pathToRegexp from 'path-to-regexp';
+// import pathToRegexp from 'path-to-regexp';
 import { Breadcrumb, Tabs } from 'antd';
 import classNames from 'classnames';
 import styles from './index.less';
@@ -8,15 +8,16 @@ import { urlToList } from '../utils/pathTools';
 
 const { TabPane } = Tabs;
 export function getBreadcrumb(breadcrumbNameMap, url) {
-  let breadcrumb = breadcrumbNameMap[url];
-  if (!breadcrumb) {
-    Object.keys(breadcrumbNameMap).forEach((item) => {
-      if (pathToRegexp(item).test(url)) {
-        breadcrumb = breadcrumbNameMap[item];
-      }
-    });
-  }
-  return breadcrumb || {};
+  // let breadcrumb = breadcrumbNameMap[url];
+  // if (!breadcrumb) {
+  //   Object.keys(breadcrumbNameMap).forEach((item) => {
+  //     if (pathToRegexp(item).test(url)) {
+  //       breadcrumb = breadcrumbNameMap[item];
+  //     }
+  //   });
+  // }
+  // return breadcrumb || {};
+  return {};
 }
 
 export default class PageHeader extends PureComponent {

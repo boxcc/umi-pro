@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Layout, Icon, message } from 'antd';
 import DocumentTitle from 'react-document-title';
 import { connect } from 'dva';
-import { Route, Redirect, Switch, routerRedux } from 'dva/router';
+// import { Route, Redirect, Switch, routerRedux } from 'dva/router';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import { enquireScreen } from 'enquire-js';
@@ -11,13 +11,13 @@ import GlobalHeader from '../components/GlobalHeader';
 import GlobalFooter from '../components/GlobalFooter';
 import SiderMenu from '../components/SiderMenu';
 
-import { getRoutes } from '../utils/utils';
+// import { getRoutes } from '../utils/utils';
 import Authorized from '../utils/Authorized';
 import { getMenuData } from '../common/menu';
 import logo from '../assets/logo.svg';
 
 const { Content, Header, Footer } = Layout;
-const { AuthorizedRoute, check } = Authorized;
+// const { AuthorizedRoute, check } = Authorized;
 
 /**
  * 根据菜单取得重定向地址.
@@ -105,25 +105,25 @@ export default class BasicLayout extends React.PureComponent {
     // }
     return title;
   }
-  getBashRedirect = () => {
-    // According to the url parameter to redirect
-    // 这里是重定向的,重定向到 url 的 redirect 参数所示地址
-    const urlParams = new URL(window.location.href);
+  // getBashRedirect = () => {
+  //   // According to the url parameter to redirect
+  //   // 这里是重定向的,重定向到 url 的 redirect 参数所示地址
+  //   const urlParams = new URL(window.location.href);
 
-    const redirect = urlParams.searchParams.get('redirect');
-    // Remove the parameters in the url
-    if (redirect) {
-      urlParams.searchParams.delete('redirect');
-      window.history.replaceState(null, 'redirect', urlParams.href);
-    } else {
-      const { routerData } = this.props;
-      // get the first authorized route path in routerData
-      const authorizedPath = Object.keys({}).find(item =>
-        check(routerData[item].authority, item) && item !== '/');
-      return authorizedPath;
-    }
-    return redirect;
-  }
+  //   const redirect = urlParams.searchParams.get('redirect');
+  //   // Remove the parameters in the url
+  //   if (redirect) {
+  //     urlParams.searchParams.delete('redirect');
+  //     window.history.replaceState(null, 'redirect', urlParams.href);
+  //   } else {
+  //     const { routerData } = this.props;
+  //     // get the first authorized route path in routerData
+  //     const authorizedPath = Object.keys({}).find(item =>
+  //       check(routerData[item].authority, item) && item !== '/');
+  //     return authorizedPath;
+  //   }
+  //   return redirect;
+  // }
   handleMenuCollapse = (collapsed) => {
     this.props.dispatch({
       type: 'global/changeLayoutCollapsed',
@@ -139,7 +139,7 @@ export default class BasicLayout extends React.PureComponent {
   }
   handleMenuClick = ({ key }) => {
     if (key === 'triggerError') {
-      this.props.dispatch(routerRedux.push('/exception/trigger'));
+      // this.props.dispatch(routerRedux.push('/exception/trigger'));
       return;
     }
     if (key === 'logout') {
@@ -157,9 +157,9 @@ export default class BasicLayout extends React.PureComponent {
   }
   render() {
     const {
-      currentUser, collapsed, fetchingNotices, notices, routerData, match, location, children,
+      currentUser, collapsed, fetchingNotices, notices, location, children,
     } = this.props;
-    const bashRedirect = this.getBashRedirect();
+    // const bashRedirect = this.getBashRedirect();
     const layout = (
       <Layout>
         <SiderMenu
