@@ -27,8 +27,8 @@
     "react-container-query": "^0.11.0",
     "react-document-title": "^2.0.3",
     "react-fittext": "^1.0.0",
-    "umi": "^1.0.0-0",
-    "umi-plugin-dva": "^0.1.5",
+    "umi": "^1.1.0",
+    "umi-plugin-dva": "^0.4.0",
     "url-polyfill": "^1.0.11"
   },
   "devDependencies": {

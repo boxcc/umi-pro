@@ -31,7 +31,7 @@
 //               <Step title="确认转账信息" />
 //               <Step title="完成" />
 //             </Steps>
-//             <Redirect exact from="/form/step-form" to="/form/step-form/step1" />
+//             <Redirect exact from="/form/step-form" to="/form/step-form/info" />
 
 //           </Fragment>
 //         </Card>
@@ -43,7 +43,7 @@ import React from 'react';
 import Redirect from 'umi/redirect';
 
 const StepForm = () => {
-  return <Redirect exact from="/form/step-form" to="/form/step-form/step1" />;
+  return <Redirect exact from="/form/step-form" to="/form/step-form/info" />;
 };
 
 export default StepForm;
