@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'dva';
 import { Card, Badge, Table, Divider } from 'antd';
 import DescriptionList from 'components/DescriptionList';
-import PageHeaderLayout from '../../layouts/PageHeaderLayout';
+import PageHeaderLayout from 'layouts/PageHeaderLayout';
 import styles from './basic.less';
 
 const { Description } = DescriptionList;

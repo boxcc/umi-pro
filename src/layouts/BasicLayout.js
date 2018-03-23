@@ -4,17 +4,18 @@ import { Layout, Icon, message } from 'antd';
 import DocumentTitle from 'react-document-title';
 import { connect } from 'dva';
 // import { Route, Redirect, Switch, routerRedux } from 'dva/router';
+import router from 'umi/router';
 import { ContainerQuery } from 'react-container-query';
 import classNames from 'classnames';
 import { enquireScreen } from 'enquire-js';
-import GlobalHeader from '../components/GlobalHeader';
-import GlobalFooter from '../components/GlobalFooter';
-import SiderMenu from '../components/SiderMenu';
+import GlobalHeader from 'components/GlobalHeader';
+import GlobalFooter from 'components/GlobalFooter';
+import SiderMenu from 'components/SiderMenu';
 
 // import { getRoutes } from '../utils/utils';
-import Authorized from '../utils/Authorized';
-import { getMenuData } from '../common/menu';
-import logo from '../assets/logo.svg';
+import Authorized from 'utils/Authorized';
+import { getMenuData } from 'common/menu';
+import logo from 'assets/logo.svg';
 
 const { Content, Header, Footer } = Layout;
 // const { AuthorizedRoute, check } = Authorized;
@@ -139,8 +140,7 @@ export default class BasicLayout extends React.PureComponent {
   }
   handleMenuClick = ({ key }) => {
     if (key === 'triggerError') {
-      // this.props.dispatch(routerRedux.push('/exception/trigger'));
-      return;
+      router.push('/exception/trigger');
     }
     if (key === 'logout') {
       this.props.dispatch({

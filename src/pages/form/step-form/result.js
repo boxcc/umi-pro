@@ -1,15 +1,15 @@
 import React, { Fragment } from 'react';
 import { connect } from 'dva';
 import { Button, Row, Col } from 'antd';
-import { routerRedux } from 'dva/router';
+import router from 'umi/router';
 import Result from 'components/Result';
 import styles from './style.less';
 
 class Step3 extends React.PureComponent {
   render() {
-    const { dispatch, data } = this.props;
+    const { data } = this.props;
     const onFinish = () => {
-      dispatch(routerRedux.push('/form/step-form'));
+      router.push('/form/step-form');
     };
     const information = (
       <div className={styles.information}>

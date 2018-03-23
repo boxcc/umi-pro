@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Table, Button, Input, message, Popconfirm, Divider } from 'antd';
-import styles from './style.less';
+import styles from './index.less';
 
 export default class TableForm extends PureComponent {
   constructor(props) {
