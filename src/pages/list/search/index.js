@@ -2,5 +2,5 @@ import React from 'react';
 import Redirect from 'umi/redirect';
 
 export default () => {
-  return <Redirect exact from="/form/step-form" to="/form/step-form/info" />;
+  return <Redirect exact from="/list/search" to="/list/search/projects" />;
 };
