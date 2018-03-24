@@ -1,19 +1,24 @@
 import React from 'react';
-import styles from './index.css';
-import Header from 'components/Header';
+import pathToRegexp from 'path-to-regexp';
+import BasicLayout from 'layouts/BasicLayout';
+// import BlankLayout from 'layouts/BlankLayout';
+// import PageHeaderLayout from 'layouts/PageHeaderLayout';
+import UserLayout from 'layouts/UserLayout';
 import withRouter from 'umi/withRouter';
+import { LocaleProvider } from 'antd';
+import zhCN from 'antd/lib/locale-provider/zh_CN';
 
-function Layout({ children, location }) {
+export default withRouter(({ children, location, ...restProps }) => {
+  const { pathname } = window.location;
+  let LayoutComponent = BasicLayout;
+  if (pathToRegexp('/user(.*)').test(pathname)) {
+    LayoutComponent = UserLayout;
+  } else {
+    LayoutComponent = BasicLayout;
+  }
   return (
-    <div className={styles.normal}>
-      <Header location={location} />
-      <div className={styles.content}>
-        <div className={styles.main}>
-          {children}
-        </div>
-      </div>
-    </div>
+    <LocaleProvider locale={zhCN}>
+      <LayoutComponent location={location}>{children}</LayoutComponent>
+    </LocaleProvider>
   );
-}
-
-export default withRouter(Layout);
+});
