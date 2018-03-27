@@ -27,8 +27,6 @@
     "react-container-query": "^0.11.0",
     "react-document-title": "^2.0.3",
     "react-fittext": "^1.0.0",
-    "umi": "^1.1.0",
-    "umi-plugin-dva": "^0.4.0",
     "url-polyfill": "^1.0.11"
   },
   "devDependencies": {
@@ -39,6 +37,9 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
     "husky": "^0.12.0",
-    "mockjs": "^1.0.1-beta3"
+    "mockjs": "^1.0.1-beta3",
+    "umi": "^1.1.2",
+    "umi-plugin-dll": "^0.1.0",
+    "umi-plugin-dva": "^0.4.0"
   }
 }
