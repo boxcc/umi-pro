@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
-import { Link, Redirect, Switch, Route } from 'dva/router';
+import Link from 'umi/link';
 import DocumentTitle from 'react-document-title';
 import { Icon } from 'antd';
-import GlobalFooter from '../components/GlobalFooter';
+import logo from 'assets/logo.svg';
+import { getBreadcrumbNameMap } from 'common/menu';
+import GlobalFooter from 'components/GlobalFooter';
+
 import styles from './UserLayout.less';
-import logo from '../assets/logo.svg';
-import { getRoutes } from '../utils/utils';
 
 const links = [{
   key: 'help',
@@ -25,16 +26,18 @@ const copyright = <Fragment>Copyright <Icon type="copyright" /> 2018 蚂蚁金�
 
 class UserLayout extends React.PureComponent {
   getPageTitle() {
-    const { routerData, location } = this.props;
+    const { location } = this.props;
     const { pathname } = location;
+    const breadcrumbNameMap = getBreadcrumbNameMap();
     let title = 'Ant Design Pro';
-    if (routerData[pathname] && routerData[pathname].name) {
-      title = `${routerData[pathname].name} - Ant Design Pro`;
+    if (breadcrumbNameMap[pathname] && breadcrumbNameMap[pathname].name) {
+      title = `${breadcrumbNameMap[pathname].name} - Ant Design Pro`;
     }
     return title;
   }
+  
   render() {
-    const { routerData, match } = this.props;
+    const { children } = this.props;
     return (
       <DocumentTitle title={this.getPageTitle()}>
         <div className={styles.container}>
@@ -48,20 +51,9 @@ class UserLayout extends React.PureComponent {
               </div>
               <div className={styles.desc}>Ant Design 是西湖区最具影响力的 Web 设计规范</div>
             </div>
-            <Switch>
-              {getRoutes(match.path, routerData).map(item =>
-                (
-                  <Route
-                    key={item.key}
-                    path={item.path}
-                    component={item.component}
-                    exact={item.exact}
-                  />
-                )
-              )}
-              <Redirect exact from="/user" to="/user/login" />
-            </Switch>
+            {children}
           </div>
+          
           <GlobalFooter links={links} copyright={copyright} />
         </div>
       </DocumentTitle>

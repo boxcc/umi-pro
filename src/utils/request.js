@@ -74,12 +74,12 @@ export default function request(url, options) {
     })
     .catch((e) => {
       const status = e.name;
-      // if (status === 401) {
-      //   dispatch({
-      //     type: 'login/logout',
-      //   });
-      //   return;
-      // }
+      if (status === 401) {
+        window.g_app._store.dispatch({
+          type: 'login/logout',
+        });
+        return;
+      }
       if (status === 403) {
         router.push('/403');
         return;
@@ -90,6 +90,7 @@ export default function request(url, options) {
       }
       if (status >= 404 && status < 422) {
         router.push('/404');
+        return;
       }
     });
 }
