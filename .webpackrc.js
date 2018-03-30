@@ -16,10 +16,8 @@ export default {
     layouts: resolve(__dirname, 'src/layouts'),
     models: resolve(__dirname, 'src/models'),
     pages: resolve(__dirname, 'src/pages'),
-    plugins: resolve(__dirname, 'src/plugins'),
     services: resolve(__dirname, 'src/services'),
     utils: resolve(__dirname, 'src/utils'),
-
   },
   ignoreMomentLocale: true,
 };
