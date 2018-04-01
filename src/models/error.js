@@ -1,4 +1,4 @@
-import { query403, query401, query404, query500 } from '../services/error';
+import { query403, query401, query404, query500 } from 'services/error';
 
 export default {
   namespace: 'error',

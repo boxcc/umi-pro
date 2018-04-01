@@ -1,4 +1,4 @@
-import { queryNotices } from '../services/api';
+import { queryNotices } from 'services/api';
 import { routerRedux } from 'dva/router';
 
 export default {

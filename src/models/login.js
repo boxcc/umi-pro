@@ -1,7 +1,7 @@
-import { routerRedux } from 'dva/router';
-import { fakeAccountLogin } from '../services/api';
-import { setAuthority } from '../utils/authority';
-import { reloadAuthorized } from '../utils/Authorized';
+import router from 'umi/router';
+import { fakeAccountLogin } from 'services/api';
+import { setAuthority } from 'utils/authority';
+import { reloadAuthorized } from 'utils/Authorized';
 
 export default {
   namespace: 'login',
@@ -20,7 +20,7 @@ export default {
       // Login successfully
       if (response.status === 'ok') {
         reloadAuthorized();
-        yield put(routerRedux.push('/'));
+        router.push('/');
       }
     },
     *logout(_, { put, select }) {
@@ -40,7 +40,7 @@ export default {
           },
         });
         reloadAuthorized();
-        yield put(routerRedux.push('/user/login'));
+        router.push('/user/login');
       }
     },
   },
