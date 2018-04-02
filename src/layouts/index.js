@@ -9,7 +9,7 @@ import { LocaleProvider } from 'antd';
 import zhCN from 'antd/lib/locale-provider/zh_CN';
 
 export default withRouter(({ children, location, ...restProps }) => {
-  const { pathname } = window.location;
+  const { pathname } = location;
   let LayoutComponent = BasicLayout;
   if (pathToRegexp('/user(.*)').test(pathname)) {
     LayoutComponent = UserLayout;
