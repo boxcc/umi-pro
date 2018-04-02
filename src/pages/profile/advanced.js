@@ -12,8 +12,6 @@ import styles from './advanced.less';
 const { Step } = Steps;
 const { Description } = DescriptionList;
 const ButtonGroup = Button.Group;
-const { Secured } = Authorized;
-
 const getWindowWidth = () => (window.innerWidth || document.documentElement.clientWidth);
 
 const menu = (
@@ -141,7 +139,6 @@ const columns = [{
   key: 'memo',
 }];
 
-@Secured('admin')
 @connect(({ profile, loading }) => ({
   profile,
   loading: loading.effects['profile/fetchAdvanced'],
@@ -153,6 +150,8 @@ export default class AdvancedProfile extends Component {
   }
 
   componentDidMount() {
+    Authorized.grant(['admin']);
+
     const { dispatch } = this.props;
     dispatch({
       type: 'profile/fetchAdvanced',
