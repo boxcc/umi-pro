@@ -16,6 +16,7 @@
     "bizcharts-plugin-slider": "^2.0.1",
     "classnames": "^2.2.5",
     "enquire-js": "^0.1.3",
+    "intl": "^1.2.5",
     "lodash": "^4.17.5",
     "lodash-decorators": "^5.0.0",
     "moment": "^2.21.0",
@@ -27,6 +28,7 @@
     "react-container-query": "^0.11.0",
     "react-document-title": "^2.0.3",
     "react-fittext": "^1.0.0",
+    "react-intl": "^2.4.0",
     "url-polyfill": "^1.0.11"
   },
   "devDependencies": {

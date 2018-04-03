@@ -1,10 +1,12 @@
 import { queryNotices } from 'services/api';
-import { routerRedux } from 'dva/router';
+import router from 'umi/router';
+import { DEFAULT_LOCALE } from 'common/constants';
 
 export default {
   namespace: 'global',
 
   state: {
+    locale: DEFAULT_LOCALE,
     collapsed: false,
     notices: [],
     login: false,
@@ -15,7 +17,7 @@ export default {
       yield put({
         type: 'signin',
       });
-      yield put(routerRedux.push('/'));
+      yield put(router.push('/'));
     },
     *fetchNotices(_, { call, put }) {
       const data = yield call(queryNotices);

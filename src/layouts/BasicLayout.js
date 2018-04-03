@@ -17,6 +17,15 @@ import Authorized from 'utils/Authorized';
 import { getMenuData } from 'common/menu';
 import logo from 'assets/logo.svg';
 
+import { defineMessages, FormattedMessage } from 'react-intl';
+
+const messages = defineMessages({
+  footer: {
+    id: 'layouts.BasicLayout.footer',
+    defaultMessage: 'Ant design pro.',
+  },
+});
+
 const { Content, Header, Footer } = Layout;
 // const { AuthorizedRoute, check } = Authorized;
 
@@ -61,7 +70,7 @@ const query = {
 };
 
 let isMobile;
-enquireScreen((b) => {
+enquireScreen(b => {
   isMobile = b;
 });
 
@@ -71,12 +80,11 @@ enquireScreen((b) => {
   fetchingNotices: loading.effects['global/fetchNotices'],
   notices: global.notices,
 }))
-
 export default class BasicLayout extends React.PureComponent {
   static childContextTypes = {
     location: PropTypes.object,
     breadcrumbNameMap: PropTypes.object,
-  }
+  };
   state = {
     isMobile,
   };
@@ -88,7 +96,7 @@ export default class BasicLayout extends React.PureComponent {
     };
   }
   componentDidMount() {
-    enquireScreen((mobile) => {
+    enquireScreen(mobile => {
       this.setState({
         isMobile: mobile,
       });
@@ -125,19 +133,19 @@ export default class BasicLayout extends React.PureComponent {
   //   }
   //   return redirect;
   // }
-  handleMenuCollapse = (collapsed) => {
+  handleMenuCollapse = collapsed => {
     this.props.dispatch({
       type: 'global/changeLayoutCollapsed',
       payload: collapsed,
     });
-  }
-  handleNoticeClear = (type) => {
+  };
+  handleNoticeClear = type => {
     message.success(`清空了${type}`);
     this.props.dispatch({
       type: 'global/clearNotices',
       payload: type,
     });
-  }
+  };
   handleMenuClick = ({ key }) => {
     if (key === 'triggerError') {
       router.push('/exception/trigger');
@@ -147,17 +155,22 @@ export default class BasicLayout extends React.PureComponent {
         type: 'login/logout',
       });
     }
-  }
-  handleNoticeVisibleChange = (visible) => {
+  };
+  handleNoticeVisibleChange = visible => {
     if (visible) {
       this.props.dispatch({
         type: 'global/fetchNotices',
       });
     }
-  }
+  };
   render() {
     const {
-      currentUser, collapsed, fetchingNotices, notices, location, children,
+      currentUser,
+      collapsed,
+      fetchingNotices,
+      notices,
+      location,
+      children,
     } = this.props;
     // const bashRedirect = this.getBashRedirect();
     const layout = (
@@ -194,25 +207,32 @@ export default class BasicLayout extends React.PureComponent {
           </Content>
           <Footer style={{ padding: 0 }}>
             <GlobalFooter
-              links={[{
-                key: 'Pro 首页',
-                title: 'Pro 首页',
-                href: 'http://pro.ant.design',
-                blankTarget: true,
-              }, {
-                key: 'github',
-                title: <Icon type="github" />,
-                href: 'https://github.com/ant-design/ant-design-pro',
-                blankTarget: true,
-              }, {
-                key: 'Ant Design',
-                title: 'Ant Design',
-                href: 'http://ant.design',
-                blankTarget: true,
-              }]}
+              links={[
+                {
+                  key: 'Pro 首页',
+                  title: 'Pro 首页',
+                  href: 'http://pro.ant.design',
+                  blankTarget: true,
+                },
+                {
+                  key: 'github',
+                  title: <Icon type="github" />,
+                  href: 'https://github.com/ant-design/ant-design-pro',
+                  blankTarget: true,
+                },
+                {
+                  key: 'Ant Design',
+                  title: 'Ant Design',
+                  href: 'http://ant.design',
+                  blankTarget: true,
+                },
+              ]}
               copyright={
                 <Fragment>
-                  Copyright <Icon type="copyright" /> 2018 蚂蚁金服体验技术部出品
+                  Copyright <Icon type="copyright" /> 2018{' '}
+                  <FormattedMessage
+                    {...messages.footer}
+                  />
                 </Fragment>
               }
             />
