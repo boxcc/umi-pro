@@ -11,6 +11,7 @@ import { enquireScreen } from 'enquire-js';
 import GlobalHeader from 'components/GlobalHeader';
 import GlobalFooter from 'components/GlobalFooter';
 import SiderMenu from 'components/SiderMenu';
+import LocaleToggle from 'containers/LocaleToggle';
 
 // import { getRoutes } from '../utils/utils';
 import Authorized from 'utils/Authorized';
@@ -233,6 +234,8 @@ export default class BasicLayout extends React.PureComponent {
                   <FormattedMessage
                     {...messages.footer}
                   />
+                  &nbsp;
+                  <LocaleToggle />
                 </Fragment>
               }
             />

@@ -68,6 +68,12 @@ export default {
         notices: state.notices.filter(item => item.type !== payload),
       };
     },
+    localeToggle(state, { payload }) {
+      return {
+        ...state,
+        locale: payload,
+      };
+    },
   },
 
   // subscriptions: {

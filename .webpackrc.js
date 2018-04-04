@@ -13,6 +13,7 @@ export default {
     assets: resolve(__dirname, 'src/assets'),
     common: resolve(__dirname, 'src/common'),
     components: resolve(__dirname, 'src/components'),
+    containers: resolve(__dirname, 'src/containers'),
     layouts: resolve(__dirname, 'src/layouts'),
     models: resolve(__dirname, 'src/models'),
     pages: resolve(__dirname, 'src/pages'),
