@@ -35,7 +35,7 @@ const app = (messages) => withRouter(
         key={locale}
         messages={messages[locale]}
       >
-        <LocaleProvider locale={zhCN}>
+        <LocaleProvider locale={locale === 'zh' ? zhCN : {}}>
           <LayoutComponent location={location}>{children}</LayoutComponent>
         </LocaleProvider>
       </IntlProvider>

@@ -19,7 +19,7 @@ export default class LocaleToggle extends PureComponent {
   render() {
     const { locale } = this.props;
     return (
-      <Select value={locale} onChange={this.handleLocaleToggle}>
+      <Select value={locale} onChange={this.handleLocaleToggle} size="small">
         {appLocales.map(row => <Option key={row}>{row}</Option>)}
       </Select>
     );
