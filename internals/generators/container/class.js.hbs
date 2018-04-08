@@ -1,0 +1,31 @@
+/**
+ *
+ * {{properCase name }}
+ *
+ */
+
+import React from 'react';
+// import PropTypes from 'prop-types';
+import { connect } from 'dva';
+
+{{#if wantMessages}}
+import { FormattedMessage } from 'react-intl';
+{{/if}}
+{{#if wantMessages}}
+import messages from './messages';
+{{/if}}
+
+@connect(({ {{modelName}} }) => ({
+  {{modelName}},
+}))
+export default class {{ properCase name }} extends {{{ type }}} {
+  render() {
+    return (
+      <div>
+      {{#if wantMessages}}
+        <FormattedMessage {...messages.header} />
+      {{/if}}
+      </div>
+    );
+  }
+}

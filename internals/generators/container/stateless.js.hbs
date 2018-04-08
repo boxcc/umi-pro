@@ -1,0 +1,34 @@
+/**
+ *
+ * {{properCase name }}
+ *
+ */
+
+import React from 'react';
+// import PropTypes from 'prop-types';
+import { connect } from 'dva';
+
+{{#if wantMessages}}
+import { FormattedMessage } from 'react-intl';
+{{/if}}
+{{#if wantMessages}}
+import messages from './messages';
+{{/if}}
+
+function {{ properCase name }}() {
+  return (
+    <div>
+    {{#if wantMessages}}
+      <FormattedMessage {...messages.header} />
+    {{/if}}
+    </div>
+  );
+}
+
+function mapStateToProps({ {{ modelName }} }) {
+  return {
+    {{ modelName }},
+  };
+}
+
+export default connect(mapStateToProps)({{ properCase name }});
