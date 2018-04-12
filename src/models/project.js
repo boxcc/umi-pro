@@ -19,10 +19,7 @@ export default {
 
   reducers: {
     saveNotice(state, action) {
-      return {
-        ...state,
-        notice: action.payload,
-      };
+      state.notice = action.payload;
     },
   },
 };

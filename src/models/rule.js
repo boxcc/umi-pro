@@ -38,10 +38,7 @@ export default {
 
   reducers: {
     save(state, action) {
-      return {
-        ...state,
-        data: action.payload,
-      };
+      state.data = action.payload;
     },
   },
 };

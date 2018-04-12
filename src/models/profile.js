@@ -29,10 +29,7 @@ export default {
 
   reducers: {
     show(state, { payload }) {
-      return {
-        ...state,
-        ...payload,
-      };
+      state = Object.assign(state, payload);
     },
   },
 };

@@ -19,10 +19,7 @@ export default {
 
   reducers: {
     saveTags(state, action) {
-      return {
-        ...state,
-        tags: action.payload,
-      };
+      state.tags = action.payload;
     },
   },
 };

@@ -35,12 +35,9 @@ export default {
 
   reducers: {
     saveStepFormData(state, { payload }) {
-      return {
-        ...state,
-        step: {
-          ...state.step,
-          ...payload,
-        },
+      state.step = {
+        ...state.step,
+        ...payload,
       };
     },
   },

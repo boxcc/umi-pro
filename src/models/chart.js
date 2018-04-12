@@ -38,13 +38,14 @@ export default {
 
   reducers: {
     save(state, { payload }) {
-      return {
-        ...state,
-        ...payload,
-      };
+      // Object.keys(payload).forEach((key) => {
+      //   console.log(payload[key]);
+      //   state[key] = payload[key];
+      // });
+      state = Object.assign(state, payload);
     },
-    clear() {
-      return {
+    clear(state) {
+      state = Object.assign(state, {
         visitData: [],
         visitData2: [],
         salesData: [],
@@ -55,7 +56,7 @@ export default {
         salesTypeDataOnline: [],
         salesTypeDataOffline: [],
         radarData: [],
-      };
+      });
     },
   },
 };

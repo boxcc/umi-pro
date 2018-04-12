@@ -26,16 +26,10 @@ export default {
 
   reducers: {
     queryList(state, action) {
-      return {
-        ...state,
-        list: action.payload,
-      };
+      state.list = action.payload;
     },
     appendList(state, action) {
-      return {
-        ...state,
-        list: state.list.concat(action.payload),
-      };
+      state.list = state.list.concat(action.payload);
     },
   },
 };

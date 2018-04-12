@@ -27,25 +27,13 @@ export default {
 
   reducers: {
     save(state, action) {
-      return {
-        ...state,
-        list: action.payload,
-      };
+      state.list = action.payload;
     },
     saveCurrentUser(state, action) {
-      return {
-        ...state,
-        currentUser: action.payload,
-      };
+      state.currentUser = action.payload;
     },
     changeNotifyCount(state, action) {
-      return {
-        ...state,
-        currentUser: {
-          ...state.currentUser,
-          notifyCount: action.payload,
-        },
-      };
+      state.currentUser.notifyCount = action.payload;
     },
   },
 };

@@ -1,6 +1,11 @@
 export default {
   plugins: [
-    'umi-plugin-dva', 
+    [
+      'umi-plugin-dva', 
+      { 
+        immer: true 
+      }
+    ],
     [
       'umi-plugin-dll', 
       {

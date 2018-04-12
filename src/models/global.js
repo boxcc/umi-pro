@@ -45,34 +45,19 @@ export default {
 
   reducers: {
     signin(state) {
-      return {
-        ...state,
-        login: true,
-      };
+      state.login = true;
     },
     changeLayoutCollapsed(state, { payload }) {
-      return {
-        ...state,
-        collapsed: payload,
-      };
+      state.collapsed = payload;
     },
     saveNotices(state, { payload }) {
-      return {
-        ...state,
-        notices: payload,
-      };
+      state.notices = payload;
     },
     saveClearedNotices(state, { payload }) {
-      return {
-        ...state,
-        notices: state.notices.filter(item => item.type !== payload),
-      };
+      state.notices = state.notices.filter(item => item.type !== payload);
     },
     localeToggle(state, { payload }) {
-      return {
-        ...state,
-        locale: payload,
-      };
+      state.locale = payload;
     },
   },
 

@@ -43,8 +43,8 @@
     "mockjs": "^1.0.1-beta3",
     "node-plop": "^0.13.0",
     "plop": "^2.0.0",
-    "umi": "^1.1.4",
+    "umi": "^1.1.5",
     "umi-plugin-dll": "^0.1.2",
-    "umi-plugin-dva": "^0.5.0"
+    "umi-plugin-dva": "^0.6.0"
   }
 }

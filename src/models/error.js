@@ -41,9 +41,7 @@ export default {
 
   reducers: {
     trigger(state, action) {
-      return {
-        error: action.payload,
-      };
+      state.error = action.payload;
     },
   },
 };

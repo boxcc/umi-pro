@@ -19,10 +19,7 @@ export default {
 
   reducers: {
     saveList(state, action) {
-      return {
-        ...state,
-        list: action.payload,
-      };
+      state.list = action.payload;
     },
   },
 };
