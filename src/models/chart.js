@@ -42,10 +42,10 @@ export default {
       //   console.log(payload[key]);
       //   state[key] = payload[key];
       // });
-      state = Object.assign(state, payload);
+      Object.assign(state, payload);
     },
     clear(state) {
-      state = Object.assign(state, {
+      Object.assign(state, {
         visitData: [],
         visitData2: [],
         salesData: [],

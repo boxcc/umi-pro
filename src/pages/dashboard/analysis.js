@@ -474,7 +474,7 @@ export default class Analysis extends Component {
                 <div style={{ padding: '0 24px' }}>
                   <TimelineChart
                     height={400}
-                    data={offlineChartData}
+                    data={offlineChartData.slice(0)}
                     titleMap={{ y1: '客流量', y2: '支付笔数' }}
                   />
                 </div>
