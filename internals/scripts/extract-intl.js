@@ -10,17 +10,26 @@ const transform = require('babel-core').transform;
 const animateProgress = require('./helpers/progress');
 const addCheckmark = require('./helpers/checkmark');
 
-const pkg = require('../../package.json');
-const presets = pkg.babel.presets;
-const plugins = pkg.babel.plugins || [];
+// const pkg = require('../../package.json');
+const presets = [
+  [
+    "@babel/preset-env",
+    {
+      "modules": false
+    }
+  ],
+  "@babel/preset-react",
+  "@babel/preset-stage-0"
+];
+const plugins = [];
 
-const i18n = require('../../app/i18n');
-const { DEFAULT_LOCALE } = require('../../app/containers/App/constants');
+const i18n = require('../../src/i18n');
+const { DEFAULT_LOCALE } = require('../../src/common/constants');
 
 require('shelljs/global');
 
 // Glob to match all js files except test files
-const FILES_TO_PARSE = 'app/**/!(*.test).js';
+const FILES_TO_PARSE = 'src/**/!(*.test).js';
 const locales = i18n.appLocales;
 
 const newLine = () => process.stdout.write('\n');
@@ -62,7 +71,7 @@ for (const locale of locales) {
   oldLocaleMappings[locale] = {};
   localeMappings[locale] = {};
   // File to store translation messages into
-  const translationFileName = `app/translations/${locale}.json`;
+  const translationFileName = `src/translations/${locale}.json`;
   try {
     // Parse the old translation message JSON files
     const messages = JSON.parse(fs.readFileSync(translationFileName));
@@ -100,7 +109,7 @@ const extractFromFile = async (fileName) => {
   try {
     const code = await readFile(fileName);
     // Use babel plugin to extract instances where react-intl is used
-    const { metadata: result } = await transform(code, { presets, plugins }); // object-shorthand
+    const { metadata: result } = await transform(code, { filename: fileName, presets, plugins }); // object-shorthand
     for (const message of result['react-intl'].messages) {
       for (const locale of locales) {
         const oldLocaleMapping = oldLocaleMappings[locale][message.id];
@@ -127,9 +136,9 @@ const extractFromFile = async (fileName) => {
   extractTaskDone()
 
   // Make the directory if it doesn't exist, especially for first run
-  mkdir('-p', 'app/translations');
+  mkdir('-p', 'src/translations');
   for (const locale of locales) {
-    const translationFileName = `app/translations/${locale}.json`;
+    const translationFileName = `src/translations/${locale}.json`;
 
     let localeTaskDone;
     try {

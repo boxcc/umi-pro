@@ -8,7 +8,7 @@ import { addLocaleData } from 'react-intl';
 import enLocaleData from 'react-intl/locale-data/en';
 import zhLocaleData from 'react-intl/locale-data/zh';
 
-import { DEFAULT_LOCALE } from 'common/constants';
+import { DEFAULT_LOCALE } from './common/constants';
 
 import enTranslationMessages from './translations/en.json';
 import zhTranslationMessages from './translations/zh.json';

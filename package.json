@@ -8,7 +8,8 @@
     "build": "umi build",
     "generate": "plop --plopfile internals/generators/index.js",
     "lint": "eslint --ext .js src test",
-    "precommit": "npm run lint"
+    "precommit": "npm run lint",
+    "extract-intl": "babel-node --presets @babel/preset-env,@babel/preset-stage-0 -- ./internals/scripts/extract-intl.js"
   },
   "dependencies": {
     "@antv/data-set": "^0.8.6",
@@ -33,6 +34,11 @@
     "url-polyfill": "^1.0.11"
   },
   "devDependencies": {
+    "@babel/node": "^7.0.0-beta.44",
+    "@babel/preset-env": "^7.0.0-beta.44",
+    "@babel/preset-react": "^7.0.0-beta.44",
+    "@babel/preset-stage-0": "^7.0.0-beta.44",
+    "babel-plugin-react-intl": "^2.4.0",
     "eslint": "^4.14.0",
     "eslint-config-umi": "^0.1.1",
     "eslint-plugin-flowtype": "^2.34.1",
@@ -43,6 +49,7 @@
     "mockjs": "^1.0.1-beta3",
     "node-plop": "^0.13.0",
     "plop": "^2.0.0",
+    "shelljs": "^0.8.1",
     "umi": "^1.1.5",
     "umi-plugin-dll": "^0.1.2",
     "umi-plugin-dva": "^0.6.0"
