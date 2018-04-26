@@ -50,8 +50,8 @@
     "node-plop": "^0.13.0",
     "plop": "^2.0.0",
     "shelljs": "^0.8.1",
-    "umi": "^1.1.6",
-    "umi-plugin-dll": "^0.1.2",
-    "umi-plugin-dva": "^0.6.1"
+    "umi": "^1.2.2",
+    "umi-plugin-dll": "^0.1.4",
+    "umi-plugin-dva": "^0.6.3"
   }
 }
