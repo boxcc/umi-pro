@@ -10,7 +10,6 @@ import { getBreadcrumbNameMap } from 'common/menu';
 const { TabPane } = Tabs;
 export function getBreadcrumb(_, url) {
   const breadcrumbNameMap = getBreadcrumbNameMap();
-  // console.log(breadcrumbNameMap);
   let breadcrumb = breadcrumbNameMap[url];
   if (!breadcrumb) {
     Object.keys(breadcrumbNameMap).forEach((item) => {
@@ -20,7 +19,6 @@ export function getBreadcrumb(_, url) {
     });
   }
   return breadcrumb || {};
-  // return {};
 }
 
 export default class PageHeader extends PureComponent {
@@ -30,6 +28,18 @@ export default class PageHeader extends PureComponent {
     location: PropTypes.object,
     breadcrumbNameMap: PropTypes.object,
   };
+
+  state = {
+    breadcrumb: null,
+  };
+
+  componentDidMount() {
+    this.getBreadcrumbDom();
+  }
+  componentWillReceiveProps() {
+    this.getBreadcrumbDom();
+  }
+
   onChange = (key) => {
     if (this.props.onTabChange) {
       this.props.onTabChange(key);
@@ -43,6 +53,12 @@ export default class PageHeader extends PureComponent {
       breadcrumbNameMap:
         this.props.breadcrumbNameMap || this.context.breadcrumbNameMap,
     };
+  };
+  getBreadcrumbDom = () => {
+    const breadcrumb = this.conversionBreadcrumbList();
+    this.setState({
+      breadcrumb,
+    });
   };
   // Generated according to props
   conversionFromProps = () => {
@@ -174,7 +190,7 @@ export default class PageHeader extends PureComponent {
       tabBarExtraContent,
     } = this.props;
     const clsString = classNames(styles.pageHeader, className);
-    const breadcrumb = this.conversionBreadcrumbList();
+
     const activeKeyProps = {};
     if (tabDefaultActiveKey !== undefined) {
       activeKeyProps.defaultActiveKey = tabDefaultActiveKey;
@@ -185,7 +201,7 @@ export default class PageHeader extends PureComponent {
 
     return (
       <div className={clsString}>
-        {breadcrumb}
+        {this.state.breadcrumb}
         <div className={styles.detail}>
           {logo && <div className={styles.logo}>{logo}</div>}
           <div className={styles.main}>
