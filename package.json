@@ -4,7 +4,7 @@
   "description": "ant design pro by umi",
   "private": true,
   "scripts": {
-    "start": "umi dev",
+    "start": "cross-env COMPILE_ON_DEMAND=none umi dev",
     "build": "umi build",
     "generate": "plop --plopfile internals/generators/index.js",
     "lint": "eslint --ext .js src test",
@@ -39,6 +39,7 @@
     "@babel/preset-react": "^7.0.0-beta.44",
     "@babel/preset-stage-0": "^7.0.0-beta.44",
     "babel-plugin-react-intl": "^2.4.0",
+    "cross-env": "^5.1.5",
     "eslint": "^4.14.0",
     "eslint-config-umi": "^0.1.1",
     "eslint-plugin-flowtype": "^2.34.1",
