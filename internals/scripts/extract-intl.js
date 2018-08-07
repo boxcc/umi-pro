@@ -11,17 +11,16 @@ const animateProgress = require('./helpers/progress');
 const addCheckmark = require('./helpers/checkmark');
 
 // const pkg = require('../../package.json');
+// const presets = pkg.babel.presets;
+// const plugins = pkg.babel.plugins || [];
 const presets = [
-  [
-    "@babel/preset-env",
-    {
-      "modules": false
-    }
-  ],
+  ["@babel/preset-env", { "modules": false }],
   "@babel/preset-react",
-  "@babel/preset-stage-0"
+  ["@babel/preset-stage-0", { "decoratorsLegacy": true }],
 ];
-const plugins = [];
+const plugins = [
+  ["@babel/plugin-proposal-decorators", { "legacy": true }],
+];
 
 const i18n = require('../../src/i18n');
 const { DEFAULT_LOCALE } = require('../../src/common/constants');

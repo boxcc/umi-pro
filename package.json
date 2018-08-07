@@ -9,11 +9,21 @@
     "generate": "plop --plopfile internals/generators/index.js",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint",
-    "extract-intl": "babel-node --presets @babel/preset-env,@babel/preset-stage-0 -- ./internals/scripts/extract-intl.js"
+    "extract-intl": "babel-node --presets @babel/preset-env -- ./internals/scripts/extract-intl.js"
+  },
+  "babel": {
+    "plugins": [
+      ["@babel/plugin-proposal-decorators", { "legacy": true }]
+    ],
+    "presets": [
+      ["@babel/preset-env", { "modules": false }],
+      "@babel/preset-react",
+      ["@babel/preset-stage-0", { "decoratorsLegacy": true }]
+    ]
   },
   "dependencies": {
     "@antv/data-set": "^0.8.6",
-    "@babel/polyfill": "^7.0.0-beta.42",
+    "@babel/polyfill": "7.0.0-beta.46",
     "bizcharts": "^3.1.4-beta.3",
     "bizcharts-plugin-slider": "^2.0.1",
     "classnames": "^2.2.5",
@@ -34,12 +44,14 @@
     "url-polyfill": "^1.0.11"
   },
   "devDependencies": {
-    "@babel/node": "^7.0.0-beta.44",
-    "@babel/preset-env": "^7.0.0-beta.44",
-    "@babel/preset-react": "^7.0.0-beta.44",
-    "@babel/preset-stage-0": "^7.0.0-beta.44",
-    "babel-plugin-react-intl": "^2.4.0",
-    "cross-env": "^5.1.5",
+    "@babel/core": "7.0.0-beta.46",
+    "@babel/node": "7.0.0-beta.46",
+    "@babel/plugin-proposal-decorators": "7.0.0-beta.46",
+    "@babel/preset-env": "7.0.0-beta.46",
+    "@babel/preset-react": "7.0.0-beta.46",
+    "@babel/preset-stage-0": "7.0.0-beta.46",
+    "babel-plugin-react-intl": "2.4.0",
+    "cross-env": "^5.2.0",
     "eslint": "^4.14.0",
     "eslint-config-umi": "^0.1.1",
     "eslint-plugin-flowtype": "^2.34.1",
@@ -51,8 +63,8 @@
     "node-plop": "^0.13.0",
     "plop": "^2.0.0",
     "shelljs": "^0.8.1",
-    "umi": "^1.3.11",
-    "umi-plugin-dll": "^0.2.1",
-    "umi-plugin-dva": "^0.9.0"
+    "umi": "1.3.18",
+    "umi-plugin-dll": "0.2.1",
+    "umi-plugin-dva": "0.9.1"
   }
 }
