@@ -11,16 +11,6 @@
     "precommit": "npm run lint",
     "extract-intl": "babel-node --presets @babel/preset-env -- ./internals/scripts/extract-intl.js"
   },
-  "babel": {
-    "plugins": [
-      ["@babel/plugin-proposal-decorators", { "legacy": true }]
-    ],
-    "presets": [
-      ["@babel/preset-env", { "modules": false }],
-      "@babel/preset-react",
-      ["@babel/preset-stage-0", { "decoratorsLegacy": true }]
-    ]
-  },
   "dependencies": {
     "@antv/data-set": "^0.8.6",
     "@babel/polyfill": "7.0.0-beta.46",
