@@ -1,5 +1,5 @@
 # umi-pro
-- 使用[umi](https://github.com/umijs/umi)，结合[dva](https://github.com/dvajs/dva)，重构[ant-design-pro](https://github.com/ant-design/ant-design-pro)
+- 使用[umi(v1.x)](https://github.com/umijs/umi)，结合[dva](https://github.com/dvajs/dva)，重构[ant-design-pro(v1.x)](https://github.com/ant-design/ant-design-pro)
 - 使用[react-intl](https://github.com/yahoo/react-intl)支持多语言
 - 部分功能参考[react-boilerplate](https://github.com/react-boilerplate/react-boilerplate)
 
